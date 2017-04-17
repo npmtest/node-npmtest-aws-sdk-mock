@@ -1,0 +1,1003 @@
+<html lang="en"><head>
+    <title>Code coverage report for node-npmtest-aws-sdk-mock/node_modules/aws-sdk-mock/index.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-aws-sdk-mock">npmtest-aws-sdk-mock (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-aws-sdk-mock/node_modules/aws-sdk-mock/index.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">19.66% <small>(23 / 117)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">3.17% <small>(2 / 63)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">9.09% <small>(2 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">20.35% <small>(23 / 113)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric">2 statements, 1 function, 1 branch</span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> » <a href="index.html">node-npmtest-aws-sdk-mock/node_modules/aws-sdk-mock/</a> » index.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tbody><tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+/**
+* Helpers to mock the AWS SDK Services using sinon.js under the hood
+* Export two functions:
+* - mock
+* - restore
+*
+* Mocking is done in two steps:
+* - mock of the constructor for the service on AWS
+* - mock of the method on the service
+**/
+&nbsp;
+var sinon = require('sinon');
+var traverse = require('traverse');
+var _AWS  = require('aws-sdk');
+var Readable = require('stream').Readable;
+&nbsp;
+var AWS      = {};
+var services = {};
+&nbsp;
+/**
+ * Sets the aws-sdk to be mocked.
+ */
+AWS.setSDK = <span class="fstat-no" title="function not covered">function(path) {</span>
+<span class="cstat-no" title="statement not covered">  _AWS = require(path);</span>
+};
+&nbsp;
+/**
+ * Stubs the service and registers the method that needs to be mocked.
+ */
+AWS.mock = <span class="fstat-no" title="function not covered">function(service, method, replace) {</span>
+  // If the service does not exist yet, we need to create and stub it.
+<span class="cstat-no" title="statement not covered">  if (!services[service]) {</span>
+<span class="cstat-no" title="statement not covered">    services[service]             = {};</span>
+&nbsp;
+    /**
+     * Save the real constructor so we can invoke it later on.
+     * Uses traverse for easy access to nested services (dot-separated)
+     */
+<span class="cstat-no" title="statement not covered">    services[service].Constructor = traverse(_AWS).get(service.split('.'));</span>
+<span class="cstat-no" title="statement not covered">    services[service].methodMocks = {};</span>
+<span class="cstat-no" title="statement not covered">    services[service].invoked = false;</span>
+<span class="cstat-no" title="statement not covered">    mockService(service);</span>
+  }
+&nbsp;
+  // Register the method to be mocked out.
+<span class="cstat-no" title="statement not covered">  if(!services[service].methodMocks[method]) {</span>
+<span class="cstat-no" title="statement not covered">    services[service].methodMocks[method] = { replace: replace };</span>
+&nbsp;
+    // If the constructor was already invoked, we need to mock the method here.
+<span class="cstat-no" title="statement not covered">    if(services[service].invoked) {</span>
+<span class="cstat-no" title="statement not covered">      mockServiceMethod(service, services[service].client, method, replace);</span>
+    }
+  }
+<span class="cstat-no" title="statement not covered">  return services[service].methodMocks[method];</span>
+}
+&nbsp;
+/**
+ * Stub the constructor for the service on AWS.
+ * E.g. calls of new AWS.SNS() are replaced.
+ */
+<span class="fstat-no" title="function not covered">function mockService(service) {</span>
+<span class="cstat-no" title="statement not covered">  var nestedServices = service.split('.');</span>
+<span class="cstat-no" title="statement not covered">  var method = nestedServices.pop();</span>
+<span class="cstat-no" title="statement not covered">  var object = traverse(_AWS).get(nestedServices);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">  var serviceStub = sinon.stub(object, method, <span class="fstat-no" title="function not covered">function(args) {</span></span>
+<span class="cstat-no" title="statement not covered">    services[service].invoked = true;</span>
+&nbsp;
+    /**
+     * Create an instance of the service by calling the real constructor
+     * we stored before. E.g. var client = new AWS.SNS()
+     * This is necessary in order to mock methods on the service.
+     */
+<span class="cstat-no" title="statement not covered">    var client               = new services[service].Constructor(args);</span>
+<span class="cstat-no" title="statement not covered">    services[service].client = client;</span>
+&nbsp;
+    // Once this has been triggered we can mock out all the registered methods.
+<span class="cstat-no" title="statement not covered">    for (var key in services[service].methodMocks) {</span>
+<span class="cstat-no" title="statement not covered">      mockServiceMethod(service, client, key, services[service].methodMocks[key].replace);</span>
+    };
+<span class="cstat-no" title="statement not covered">    return client;</span>
+  });
+<span class="cstat-no" title="statement not covered">  services[service].stub = serviceStub;</span>
+};
+&nbsp;
+/**
+ *  Stubs the method on a service.
+ *
+ * All AWS service methods take two argument:
+ *  - params: an object.
+ *  - callback: of the form 'function(err, data) {}'.
+ */
+<span class="fstat-no" title="function not covered">function mockServiceMethod(service, client, method, replace) {</span>
+<span class="cstat-no" title="statement not covered">  services[service].methodMocks[method].stub = sinon.stub(client, method, <span class="fstat-no" title="function not covered">function() {</span></span>
+<span class="cstat-no" title="statement not covered">    var args = Array.prototype.slice.call(arguments);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    var userArgs, userCallback;</span>
+<span class="cstat-no" title="statement not covered">    if (typeof(args[(args.length || 1) - 1]) === 'function') {</span>
+<span class="cstat-no" title="statement not covered">      userArgs = args.slice(0, -1);</span>
+<span class="cstat-no" title="statement not covered">      userCallback = args[(args.length || 1) - 1];</span>
+    } else {
+<span class="cstat-no" title="statement not covered">      userArgs = args;</span>
+    }
+<span class="cstat-no" title="statement not covered">    var havePromises = typeof(AWS.Promise) === 'function';</span>
+<span class="cstat-no" title="statement not covered">    var promise, resolve, reject;</span>
+<span class="cstat-no" title="statement not covered">    var makeResolved = <span class="fstat-no" title="function not covered">function(value) {<span class="cstat-no" title="statement not covered"></span>return new AWS.Promise(<span class="fstat-no" title="function not covered">function (res) {</span> <span class="cstat-no" title="statement not covered">res(value); </span>}); </span>};</span>
+<span class="cstat-no" title="statement not covered">    var makeRejected = <span class="fstat-no" title="function not covered">function(value) {<span class="cstat-no" title="statement not covered"></span>return new AWS.Promise(<span class="fstat-no" title="function not covered">function (res, rej) {</span> <span class="cstat-no" title="statement not covered">rej(value); </span>}); </span>};</span>
+<span class="cstat-no" title="statement not covered">    var callback = <span class="fstat-no" title="function not covered">function(err, data) {</span></span>
+<span class="cstat-no" title="statement not covered">      if (havePromises) {</span>
+<span class="cstat-no" title="statement not covered">        if (err) {</span>
+<span class="cstat-no" title="statement not covered">          if (reject) {</span>
+<span class="cstat-no" title="statement not covered">            reject(err);</span>
+          } else {
+<span class="cstat-no" title="statement not covered">            promise = makeRejected(err);</span>
+          }
+        } else {
+<span class="cstat-no" title="statement not covered">          if (resolve) {</span>
+<span class="cstat-no" title="statement not covered">            resolve(data);</span>
+          } else {
+<span class="cstat-no" title="statement not covered">            promise = makeResolved(data);</span>
+          }
+        }
+      }
+<span class="cstat-no" title="statement not covered">      if (userCallback) {</span>
+<span class="cstat-no" title="statement not covered">        userCallback(err, data);</span>
+      }
+    };
+<span class="cstat-no" title="statement not covered">    var request = {</span>
+      promise: havePromises ? <span class="fstat-no" title="function not covered">function() {</span>
+<span class="cstat-no" title="statement not covered">        if (!promise) {</span>
+<span class="cstat-no" title="statement not covered">          promise = new AWS.Promise(<span class="fstat-no" title="function not covered">function (resolve_, reject_) {</span></span>
+<span class="cstat-no" title="statement not covered">            resolve = resolve_;</span>
+<span class="cstat-no" title="statement not covered">            reject = reject_;</span>
+          });
+        }
+<span class="cstat-no" title="statement not covered">        return promise;</span>
+      } : undefined,
+      createReadStream: <span class="fstat-no" title="function not covered">function() {</span>
+<span class="cstat-no" title="statement not covered">        var stream = new Readable();</span>
+<span class="cstat-no" title="statement not covered">        stream._read = <span class="fstat-no" title="function not covered">function(size) {</span></span>
+<span class="cstat-no" title="statement not covered">          if(typeof(replace) === 'string' || Buffer.isBuffer(replace)) {</span>
+<span class="cstat-no" title="statement not covered">            this.push(replace);</span>
+          }
+<span class="cstat-no" title="statement not covered">          this.push(null);</span>
+        };
+<span class="cstat-no" title="statement not covered">        return stream;</span>
+      }
+    };
+&nbsp;
+    // different locations for the paramValidation property
+<span class="cstat-no" title="statement not covered">    var config = (client.config || client.options || _AWS.config);</span>
+<span class="cstat-no" title="statement not covered">    if (config.paramValidation) {</span>
+<span class="cstat-no" title="statement not covered">      try {</span>
+        // different strategies to find method, depending on wether the service is nested/unnested
+<span class="cstat-no" title="statement not covered">        var inputRules =</span>
+          ((client.api &amp;&amp; client.api.operations[method]) || client[method] || {}).input;
+<span class="cstat-no" title="statement not covered">        if (inputRules) {</span>
+<span class="cstat-no" title="statement not covered">          var params = userArgs[(userArgs.length || 1) - 1];</span>
+<span class="cstat-no" title="statement not covered">          new _AWS.ParamValidator((client.config || _AWS.config).paramValidation).validate(inputRules, params);</span>
+        }
+      } catch (e) {
+<span class="cstat-no" title="statement not covered">        callback(e, null);</span>
+<span class="cstat-no" title="statement not covered">        return request;</span>
+      }
+    }
+&nbsp;
+    // If the value of 'replace' is a function we call it with the arguments.
+<span class="cstat-no" title="statement not covered">    if(typeof(replace) === 'function') {</span>
+<span class="cstat-no" title="statement not covered">      replace.apply(replace, userArgs.concat([callback]));</span>
+    }
+    // Else we call the callback with the value of 'replace'.
+    else {
+<span class="cstat-no" title="statement not covered">      callback(null, replace);</span>
+    }
+<span class="cstat-no" title="statement not covered">    return request;</span>
+  });
+}
+&nbsp;
+/**
+ * Restores the mocks for just one method on a service, the entire service, or all mocks.
+ *
+ * When no parameters are passed, everything will be reset.
+ * When only the service is passed, that specific service will be reset.
+ * When a service and method are passed, only that method will be reset.
+ */
+AWS.restore = <span class="fstat-no" title="function not covered">function(service, method) {</span>
+<span class="cstat-no" title="statement not covered">  if(!service) {</span>
+<span class="cstat-no" title="statement not covered">    restoreAllServices();</span>
+  } else {
+<span class="cstat-no" title="statement not covered">    if (method) {</span>
+<span class="cstat-no" title="statement not covered">      restoreMethod(service, method);</span>
+    } else {
+<span class="cstat-no" title="statement not covered">      restoreService(service);</span>
+    }
+  };
+}
+&nbsp;
+/**
+ * Restores all mocked service and their corresponding methods.
+ */
+<span class="fstat-no" title="function not covered">function restoreAllServices() {</span>
+<span class="cstat-no" title="statement not covered">  for (var service in services) {</span>
+<span class="cstat-no" title="statement not covered">    restoreService(service);</span>
+  }
+}
+&nbsp;
+/**
+ * Restores a single mocked service and its corresponding methods.
+ */
+<span class="fstat-no" title="function not covered">function restoreService(service) {</span>
+<span class="cstat-no" title="statement not covered">  if (services[service]) {</span>
+<span class="cstat-no" title="statement not covered">    restoreAllMethods(service);</span>
+<span class="cstat-no" title="statement not covered">    if( services[service].stub)</span>
+<span class="cstat-no" title="statement not covered">      services[service].stub.restore();</span>
+<span class="cstat-no" title="statement not covered">    delete services[service];</span>
+  } else {
+<span class="cstat-no" title="statement not covered">    console.log('Service ' + service + ' was never instantiated yet you try to restore it.');</span>
+  }
+}
+&nbsp;
+/**
+ * Restores all mocked methods on a service.
+ */
+<span class="fstat-no" title="function not covered">function restoreAllMethods(service) {</span>
+<span class="cstat-no" title="statement not covered">  for (var method in services[service].methodMocks) {</span>
+<span class="cstat-no" title="statement not covered">    restoreMethod(service, method);</span>
+  }
+}
+&nbsp;
+/**
+ * Restores a single mocked method on a service.
+ */
+<span class="fstat-no" title="function not covered">function restoreMethod(service, method) {</span>
+<span class="cstat-no" title="statement not covered">  if (services[service] &amp;&amp; services[service].methodMocks[method]) {</span>
+<span class="cstat-no" title="statement not covered">    if (services[service].methodMocks[method].stub) {</span>
+<span class="cstat-no" title="statement not covered">      services[service].methodMocks[method].stub.restore();</span>
+    }
+<span class="cstat-no" title="statement not covered">    delete services[service].methodMocks[method];</span>
+  } else {
+<span class="cstat-no" title="statement not covered">    console.log('Method ' + service + ' was never instantiated yet you try to restore it.');</span>
+  }
+&nbsp;
+}
+&nbsp;
+(function(){
+  var setPromisesDependency = _AWS.config.setPromisesDependency;
+  /* istanbul ignore next */
+  /* only to support for older versions of aws-sdk */
+  <span class="skip-if-branch" title="else path not taken">E</span>if (typeof(setPromisesDependency) === 'function') {
+    AWS.Promise = global.Promise
+    _AWS.config.setPromisesDependency = <span class="fstat-skip" title="function not covered">function(p) {</span>
+<span class="cstat-skip" title="statement not covered">      AWS.Promise = p;</span>
+<span class="cstat-skip" title="statement not covered">      return setPromisesDependency(p);</span>
+    };
+  }
+})()
+&nbsp;
+module.exports = AWS;
+&nbsp;
+&nbsp;</pre></td></tr>
+</tbody></table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Mon Apr 17 2017 18:56:09 GMT+0000 (UTC)</div>
+</div>
+
+
+</body></html>
