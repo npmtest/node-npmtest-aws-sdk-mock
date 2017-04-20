@@ -1,4 +1,7 @@
-# test coverage for  [aws-sdk-mock (v1.6.1)](https://github.com/dwyl/aws-sdk-mock#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-aws-sdk-mock.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-aws-sdk-mock) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-aws-sdk-mock.svg)](https://travis-ci.org/npmtest/node-npmtest-aws-sdk-mock)
+# npmtest-aws-sdk-mock
+
+#### basic test coverage for  [aws-sdk-mock (v1.6.1)](https://github.com/dwyl/aws-sdk-mock#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-aws-sdk-mock.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-aws-sdk-mock) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-aws-sdk-mock.svg)](https://travis-ci.org/npmtest/node-npmtest-aws-sdk-mock)
+
 #### Functions to mock the JavaScript aws-sdk
 
 [![NPM](https://nodei.co/npm/aws-sdk-mock.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/aws-sdk-mock)
